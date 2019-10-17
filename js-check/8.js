@@ -18,7 +18,7 @@ class Planet {
     }
 
     calcV(d) {
-        return 1.3333*3.14*Math.pow(d/2,3);
+        return 4*3.14*Math.pow(d/2,3)/3;
     }
 }
 
