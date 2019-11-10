@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "lint": "eslint src"
+    "lint": "eslint src --fix"
   },
   "keywords": [],
   "author": "Zhezhera Dmitriy",
@@ -14,14 +14,9 @@
     "http": "0.0.0",
     "nanoid": "^2.1.6"
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "eslint src", "git add"
-    ]
-  },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint"
     }
   },
   "devDependencies": {
