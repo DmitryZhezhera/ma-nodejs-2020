@@ -1,0 +1,31 @@
+{
+  "name": "homework-01",
+  "version": "1.0.0",
+  "description": "homework-01",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "lint": "eslint src --fix"
+  },
+  "keywords": [],
+  "author": "Zhezhera Dmitriy",
+  "license": "ISC",
+  "dependencies": {
+    "http": "0.0.0",
+    "nanoid": "^2.1.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "devDependencies": {
+    "eslint": "6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "prettier": "^1.19.1"
+  }
+}
