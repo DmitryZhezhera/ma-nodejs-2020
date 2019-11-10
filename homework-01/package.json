@@ -1,11 +1,11 @@
 {
   "name": "homework-01",
   "version": "1.0.0",
-  "description": "",
+  "description": "homework-01",
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "lint": "eslint --ignore-path .gitignore . --fix"
+    "lint": "eslint src"
   },
   "keywords": [],
   "author": "Zhezhera Dmitriy",
@@ -14,8 +14,18 @@
     "http": "0.0.0",
     "nanoid": "^2.1.6"
   },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint src", "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "devDependencies": {
-    "eslint": "^6.6.0",
+    "eslint": "6.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-import": "^2.18.2",
