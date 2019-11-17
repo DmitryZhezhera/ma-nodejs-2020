@@ -2,9 +2,9 @@
   "name": "homework-02",
   "version": "1.0.0",
   "description": "homework-02",
-  "main": "./src/index.js",
+  "main": "./src/app.js",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "node ./src/app.js",
     "lint": "eslint src --fix"
   },
   "keywords": [],
