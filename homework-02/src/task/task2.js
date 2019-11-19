@@ -1,6 +1,6 @@
 const Planet = require('../models/Planet');
 
-class Earth extends Planet {}
+class CEarth extends Planet {}
 
-const earth = new Earth('Earth', 6371);
-module.exports = earth;
+const Earth = new CEarth('Earth', 6371);
+module.exports = Earth;

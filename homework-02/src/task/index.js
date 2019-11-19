@@ -3,7 +3,7 @@ const Task2 = require('./task2');
 const Task3 = require('./task3');
 
 module.exports = {
-  task1: Task1,
-  task2: Task2,
-  task3: Task3,
+  Task1,
+  Task2,
+  Task3,
 };
