@@ -1,6 +1,7 @@
-/*
-async function Infinity(START_NUMBER) {
+async function myInfinity(START_NUMBER) {
   let lastWholeNumber = 0;
+  let i = START_NUMBER;
+  let j = 2;
 
   setInterval(() => {
     console.log(
@@ -10,36 +11,20 @@ async function Infinity(START_NUMBER) {
     );
   }, 1000);
 
-  let i = START_NUMBER;
   setInterval(() => {
-    let isWholeNumber = true;
-    //---
-
-    for (let j = 2; j < i; j++) {
-      if (i % j == 0) {
-        isWholeNumber = false;
-        break;
-      }
-    }
-    //---
-    if (isWholeNumber) lastWholeNumber = i;
-    i++;
+    if (i === j) {
+      lastWholeNumber = i;
+      i += 1;
+      j = 2;
+    } else if (i % j === 0) {
+      i += 1;
+      j = 2;
+    } else j += 1;
   }, 0);
 }
 
-function noDivisionRemainder(I, J) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (I % J == 0) resolve(true);
-      else resolve(false);
-      reject();
-    }, 0);
-  });
-}
-*/
-
 // LONG CALCS ON LARGE NUMBERS
-
+/*
 function myInfinity(START_NUMBER) {
   let lastWholeNumber = 0;
 
@@ -66,5 +51,6 @@ function myInfinity(START_NUMBER) {
     i += 1;
   }, 0);
 }
+*/
 
-myInfinity(1000000000);
+myInfinity(3);
