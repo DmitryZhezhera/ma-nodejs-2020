@@ -6,12 +6,6 @@ function throwDice() {
     resolve(random);
   });
 }
-*/
-async function throwDice() {
-  const random = Math.floor(Math.random() * 7);
-  if (random === 0) return new Error('Lost dice');
-  return random;
-}
 
 function lap(sum, timeout) {
   return new Promise((resolve) => {
@@ -41,6 +35,36 @@ async function app() {
   result += curResult;
   result += await lap(result, 1300);
   result += await lap(result, 1000);
+}
+*/
+
+function throwDice(timeout) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const random1 = Math.floor(Math.random() * 7);
+      const random2 = Math.floor(Math.random() * 7);
+      if (random1 === 0 || random2 === 0) reject(new Error('Lost dice'));
+      console.log(
+        `func1 ${Date().toString()} | random1:${random1} random2:${random2} sum:${random1 +
+          random2}`,
+      );
+      resolve(random1 + random2);
+    }, timeout);
+  });
+}
+
+async function app() {
+  console.log('===========');
+  let result = 0;
+  try {
+    const curResult = await throwDice(700);
+    result += curResult;
+    result += await throwDice(1300);
+    result += await throwDice(1000);
+    console.log(result);
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 app();
