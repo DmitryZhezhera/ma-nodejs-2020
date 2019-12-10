@@ -1,9 +1,16 @@
+/*
 function throwDice() {
   return new Promise((resolve, reject) => {
     const random = Math.floor(Math.random() * 7);
     if (random === 0) reject(new Error('Lost dice'));
     resolve(random);
   });
+}
+*/
+async function throwDice() {
+  const random = Math.floor(Math.random() * 7);
+  if (random === 0) return new Error('Lost dice');
+  return random;
 }
 
 function lap(sum, timeout) {
