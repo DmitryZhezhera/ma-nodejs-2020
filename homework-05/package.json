@@ -4,7 +4,7 @@
   "description": "homework-05",
   "main": "./src/app.js",
   "scripts": {
-    "start": "node ./src/app.js",
+    "start": "node ./src/index.js",
     "lint": "eslint src --fix"
   },
   "keywords": [],
@@ -12,7 +12,9 @@
   "license": "ISC",
   "dependencies": {},
   "husky": {
-    "hooks": {}
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "devDependencies": {
     "eslint": "6.5.1",

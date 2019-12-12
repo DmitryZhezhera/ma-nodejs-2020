@@ -1,51 +1,76 @@
-// const path = require('path');
-// const fsp = require('fs').promises;
-// const zlib = require('zlib');
-// const { promisify } = require('util');
+const path = require('path');
+const fsp = require('fs').promises;
 
-// const gunzip = promisify(zlib.gunzip);
-// const gzip = promisify(zlib.gzip);
+const zlib = require('zlib');
+const { promisify } = require('util');
+
+const gunzip = promisify(zlib.gunzip);
+const gzip = promisify(zlib.gzip);
 
 const inputDirName = 'input';
 const outputDirName = 'output';
 const outputFileName = 'result.json.gz';
 
-// const inputDir // absolute path to input dir
-// const outputFile // absolute path to output file
+const inputDir = path.join(process.cwd(), inputDirName); // absolute path to input dir
+const outputFile = path.join(process.cwd(), outputDirName, outputFileName); // absolute path to output file
 
 async function getInputFileList() {
-  // read directory content - get list of filenames
-  // create absolute path to each filename
+  try {
+    const files = await fsp.readdir(inputDir);
+    return files.map((file) => path.join(inputDir, file));
+  } catch (e) {
+    console.log('ERROR in getInputFileList');
+    throw e;
+  }
 }
 
 async function getObjectFromFile(filePath) {
-  // read file to buffer
-  // decompress buffer with gunzip
-  // convert buffer to JSON string
-  // parse JSON string to object
+  try {
+    const compressedBuffer = await fsp.readFile(filePath); // read file to buffer
+    const jsonBuffer = await gunzip(compressedBuffer); // decompress buffer with gunzip
+    const json = jsonBuffer.toString(); // convert buffer to JSON string
+    const object = JSON.parse(json); // parse JSON string to object
+    if (!object.file || !object.url) throw new Error('ERROR wrong object income');
+    return object;
+  } catch (e) {
+    console.log('ERROR in getInputFileList');
+    throw e;
+  }
 }
 
 function rebuildUrl(originalUrl) {
-  // Change protocol, path, search string of URL
-  // use URL class
-  // Example:
-  // from URL: http://example.com/files/devices/keyboards.xls
-  // to URL: https://example.com/devices?file=keyboards&type=.xls
+  const url = new URL(originalUrl);
+  url.protocol = 'https:'; // Change protocol, path, search string of URL
+  const pathnameParsed = path.parse(url.pathname);
+  const query = `?file=${pathnameParsed.name}&type=${pathnameParsed.ext}`;
+  url.pathname = '/devices';
+  url.search = query;
+  return url;
 }
 
 async function buildOutputObject(files) {
-  // for each file:
-  // get content with getObjectFromFile() function
-  // update "url" field with rebuildUrl() function
-  // get category name from file name
-  // assign category to result object (list of devices)
+  const result = {};
+  /*eslint-disable */
+  for (const file of files) {
+    const object = await getObjectFromFile(file);
+    /* eslint-enable */
+    object.url = rebuildUrl(object.url);
+    const name = path.basename(file.toLowerCase(), '.json.gz');
+    result[name] = object;
+  }
+  return result;
 }
 
 async function saveOutput(object) {
-  // stringify object to JSON string
-  // create buffer from string
-  // compress buffer with gzip
-  // write compressed buffer to file 'output/result.json.gz' (use constants)
+  try {
+    const jsonString = JSON.stringify(object); // stringify object to JSON string
+    const gzipBuffer = await gzip(jsonString); // compress buffer with gzip
+    // write compressed buffer to file 'output/result.json.gz' (use constants)
+    await fsp.writeFile(outputFile, gzipBuffer);
+  } catch (e) {
+    console.log('ERROR in saveOutput');
+    throw e;
+  }
 }
 
 async function start() {
