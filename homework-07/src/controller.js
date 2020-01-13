@@ -12,13 +12,23 @@ function internalError(res) {
 // LIMITS SET
 function limitSet(req, res) {
   res.setHeader('Content-Type', 'application/json');
-  ram.setLimit(5000);
-  res.statusCode = 200;
-  res.end(
-    JSON.stringify({
-      message: 'Minimum free memory limit is successfully set to 5000 MB',
-    }),
-  );
+  const newLimit = req.body.limit;
+  if (typeof newLimit === 'number') {
+    ram.setLimit(newLimit);
+    res.statusCode = 200;
+    res.end(
+      JSON.stringify({
+        message: `Minimum free memory limit is successfully set to ${newLimit} MB`,
+      }),
+    );
+  } else {
+    res.statusCode = 400;
+    res.end(
+      JSON.stringify({
+        message: `New value for minimum free memory limit is not valid number`,
+      }),
+    );
+  }
 }
 
 // METRICS GET

@@ -9,7 +9,6 @@ module.exports = async (request, response) => {
       const { url: uri } = request;
       const parsedUrl = url.parse(uri);
       const queryParams = queryString.decode(parsedUrl.query);
-      console.log(queryParams);
       let body = [];
       request
         .on('error', (err) => {
@@ -20,7 +19,7 @@ module.exports = async (request, response) => {
         })
         .on('end', () => {
           body = Buffer.concat(body).toString();
-          console.log(body);
+          // console.log('body: ', body);
           router(
             { ...request, body: body ? JSON.parse(body) : {}, url: parsedUrl, queryParams },
             response,

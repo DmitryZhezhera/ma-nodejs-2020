@@ -37,19 +37,19 @@ Method: POST
 Request body: {"limit": 1000}
 Headers: Authorization: Basic Vml0YWxpaTpUZXN0MTIzNDU=
 
-У випадку успіху:
+У випадку успіху: ++
 Response code: 200
 Response body:
 {
  "message": "Minimum free memory limit is successfully set to 1000 MB"
 }
-У випадку неправильного параметру (якщо не валідне число):
+У випадку неправильного параметру (якщо не валідне число): ++
 Response code: 400
 Response body:
 {
  "message": "New value for minimum free memory limit is not valid number"
 }
-У випадку проблем з авторизацією:
+У випадку проблем з авторизацією: ++
 Response code: 401
 Response body:
 {
@@ -81,7 +81,7 @@ Response body:
 {
  "message": "Filter value is not valid"
 }
-У випадку проблем з авторизацією: --
+У випадку проблем з авторизацією: ++
 Response code: 401
 Response body:
 {
@@ -132,7 +132,7 @@ Response body:
  "free": 645.271
 }
 
-URL: http://localhost:3000/metrics?filter=free -- CHECK
+URL: http://localhost:3000/metrics?filter=free ++
 Method: GET
 Headers: Authorization: Basic Vml0YWxpaTpUZXN0MTIzNDU=
 
