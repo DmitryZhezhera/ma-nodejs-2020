@@ -12,13 +12,14 @@ const request = async (endpoint) => {
     json: true,
   };
 
+  let response;
   try {
-    const response = await requestPromise(requestOptions);
-    return response;
+    response = await requestPromise(requestOptions);
   } catch (e) {
     console.log(e);
   }
 
+  return response;
   // DOESN'T RETURN RESULT
   // requestPromise(requestOptions)
   //   .then((response) => {

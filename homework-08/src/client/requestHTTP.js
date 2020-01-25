@@ -1,11 +1,9 @@
 const http = require('http');
-const querystring = require('querystring');
+// const querystring = require('querystring');
 
 function requestHTTP(endpoint) {
   return new Promise((resolve, reject) => {
-    const json = JSON.stringify(endpoint.postData);
-
-    // const postDataSend = querystring.stringify(endpoint.postData);
+    // const postDataSend = querystring.stringify(endpoint.postData); // ITS BREAK ALL
     const postDataSend = JSON.stringify(endpoint.postData);
 
     const options = {

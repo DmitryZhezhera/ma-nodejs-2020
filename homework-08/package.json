@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node ./src/app.js",
     "startNodemon": "nodemon ./src/app.js",
-    "startNodemon AXIOS": "AXIOS nodemon ./src/app.js",
-    "startNodemon NATIVE": "NATIVE nodemon ./src/app.js",
+    "startNodemon AXIOS": "CLIENT=AXIOS nodemon ./src/app.js",
+    "startNodemon NATIVE": "CLIENT=NATIVE nodemon ./src/app.js",
     "lint": "eslint src --fix"
   },
   "keywords": [],
