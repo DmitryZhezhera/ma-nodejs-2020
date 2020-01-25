@@ -3,7 +3,10 @@ const querystring = require('querystring');
 
 function requestHTTP(endpoint) {
   return new Promise((resolve, reject) => {
-    const postDataSend = querystring.stringify(endpoint.postData);
+    const json = JSON.stringify(endpoint.postData);
+
+    // const postDataSend = querystring.stringify(endpoint.postData);
+    const postDataSend = JSON.stringify(endpoint.postData);
 
     const options = {
       hostname: endpoint.hostname,
@@ -30,7 +33,13 @@ function requestHTTP(endpoint) {
       res.on('end', () => {
         // console.log('No more data in response.');
         res.data = rawData;
-        resolve(res.data);
+        let obj;
+        try {
+          if (res.data) obj = JSON.parse(res.data);
+        } catch (e) {
+          // nothing todo
+        }
+        resolve(obj || res.data);
       });
     });
 

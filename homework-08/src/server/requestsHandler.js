@@ -19,7 +19,6 @@ module.exports = async (request, response) => {
         })
         .on('end', () => {
           body = Buffer.concat(body).toString();
-          // console.log('body', body);
           router(
             { ...request, body: body ? JSON.parse(body) : {}, url: parsedUrl, queryParams },
             response,

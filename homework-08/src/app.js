@@ -5,7 +5,7 @@ const requestsHandler = require('./server/requestsHandler');
 const client = require('./client/client');
 
 function app() {
-  let clientMode = 'AXIOS'; // HTTP || AXIOS || NATIVE
+  let clientMode = 'HTTP'; // HTTP || AXIOS || NATIVE
   console.log(process.env.CLIENT);
   if (process.env.CLIENT) clientMode = process.env.CLIENT;
 
