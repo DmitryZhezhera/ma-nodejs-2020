@@ -1,5 +1,7 @@
-to run program execute src/app.js
-nodeJs_hw07.postman_collection.json - postman IP collection
+to run program execute src/app.js or start scripts described in package.json
+By default app use http module to send request. If You run app.js with CLIENT=AXIOS it will use Axios. With flag CLIENT=NATIVE it will send requests by request-promise-native library.
+
+nodeJs_hw07.postman_collection.json - postman IP collection from hw-07.
 
 Використовуючи HTTP server із завдання №7, розробити HTTP client який буде періодично, раз у 5-10 сек опитувати всі HTTP ендпоінти які описані в завданні №7 та відображати показники в CLI(для інтерактивності інтерфейсу в CLI за бажанням можна використати cli frameworks які вам більше до вподоби)
 

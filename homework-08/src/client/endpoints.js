@@ -54,6 +54,14 @@ const endpoints = [
   {
     hostname: 'localhost',
     port: 3000,
+    path: '/metrics?filter=limitOrError',
+    method: 'GET',
+    auth: authHeader,
+    postData: '',
+  },
+  {
+    hostname: 'localhost',
+    port: 3000,
     path: '/limit',
     method: 'POST',
     auth: authHeader,

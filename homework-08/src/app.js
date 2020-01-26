@@ -5,6 +5,12 @@ const requestsHandler = require('./server/requestsHandler');
 const client = require('./client/client');
 
 function app() {
+  let clientMode = 'HTTP'; // HTTP || AXIOS || NATIVE
+  process.argv.forEach((item) => {
+    if (item === 'AXIOS') clientMode = 'AXIOS';
+    if (item === 'NATIVE') clientMode = 'NATIVE';
+  });
+
   ram.run();
 
   const server = http.createServer(requestsHandler);
@@ -13,11 +19,6 @@ function app() {
     console.log('SERVER STARTED ON PORT: ', server.address().port, ' | clientMode:', clientMode);
   });
 
-  let clientMode = 'HTTP'; // HTTP || AXIOS || NATIVE
-  process.argv.forEach((item) => {
-    if (item === 'AXIOS') clientMode = 'AXIOS';
-    if (item === 'NATIVE') clientMode = 'NATIVE';
-  });
   client(clientMode);
 }
 

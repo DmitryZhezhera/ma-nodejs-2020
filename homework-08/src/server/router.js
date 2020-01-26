@@ -36,6 +36,7 @@ module.exports = (req, res) => {
         else if (queryParams.filter === 'free') controller.metricsFree(req, res);
         else if (queryParams.filter === 'allocated') controller.metricsAllocated(req, res);
         else if (queryParams.filter === 'limit') controller.metricsLimit(res);
+        else if (queryParams.filter === 'limitOrError') controller.metricsLimitOrError(res);
         else controller.metricsInvalidFilter(req, res);
       }
       break;

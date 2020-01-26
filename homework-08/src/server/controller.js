@@ -85,6 +85,29 @@ function metricsLimit(res) {
   );
 }
 
+function metricsLimitOrError(res) {
+  const rand = 1 + Math.random() * (10 + 1 - 1);
+  // console.log('random', Math.floor(rand));
+  if (Math.floor(rand) > 4) {
+    res.setHeader('Content-Type', 'application/json');
+    res.statusCode = 200;
+    res.end(
+      JSON.stringify({
+        message: 'OK LimitOrError',
+        limit: ram.getLimit(),
+      }),
+    );
+  } else {
+    res.setHeader('Content-Type', 'application/json');
+    res.statusCode = 400;
+    res.end(
+      JSON.stringify({
+        message: 'TRY AGAIN, SOME TIME LATER',
+      }),
+    );
+  }
+}
+
 function metricsInvalidFilter(req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 400;
@@ -105,5 +128,6 @@ module.exports = {
   metricsFree,
   metricsAllocated,
   metricsLimit,
+  metricsLimitOrError,
   metricsInvalidFilter,
 };

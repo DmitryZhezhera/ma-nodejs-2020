@@ -29,15 +29,8 @@ function requestHTTP(endpoint) {
         // console.log(`BODY: ${chunk}`);
       });
       res.on('end', () => {
-        // console.log('No more data in response.');
         res.data = rawData;
-        let obj;
-        try {
-          if (res.data) obj = JSON.parse(res.data);
-        } catch (e) {
-          // nothing todo
-        }
-        resolve(obj || res.data);
+        resolve(res);
       });
     });
 

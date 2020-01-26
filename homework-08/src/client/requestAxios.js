@@ -10,9 +10,9 @@ const send = async (endpoint) => {
       },
       data: endpoint.postData,
     });
-    return response.data;
+    return response;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     return e;
   }
 };

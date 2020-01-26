@@ -12,23 +12,24 @@ const request = async (endpoint) => {
     json: true,
   };
 
-  let response;
-  try {
-    response = await requestPromise(requestOptions);
-  } catch (e) {
-    console.log(e);
-  }
+  // let response;
+  // try {
+  //   response = await requestPromise(requestOptions);
+  // } catch (e) {
+  //   console.log(e);
+  // }
+  // return response;
 
-  return response;
-  // DOESN'T RETURN RESULT
-  // requestPromise(requestOptions)
-  //   .then((response) => {
-  //     console.log('requestPromise', response);
-  //     return response;
-  //   })
-  //   .catch((e) => {
-  //     console.log(e);
-  //   });
+  const result = await requestPromise(requestOptions)
+    .then((response) => {
+      // console.log('requestPromise', response);
+      return response;
+    })
+    .catch((e) => {
+      throw new Error(e);
+      // console.log(e);
+    });
+  return result;
 };
 
 module.exports = request;
