@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "3f21bbab-1718-481a-b274-77501b1db243",
+		"name": "nodeJs_hw07",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "metrics",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Vml0YWxpaTpUZXN0MTIzNDU=",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Basic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "metrics/total",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Vml0YWxpaTpUZXN0MTIzNDU",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/metrics?filter=total",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "total"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "metrics/free",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Vml0YWxpaTpUZXN0MTIzNDU=",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Basic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/metrics?filter=free",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "free"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "metrics/allocated",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Vml0YWxpaTpUZXN0MTIzNDU",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/metrics?filter=allocated",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "allocated"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "metrics/unsupport",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Vml0YWxpaTpUZXN0MTIzNDU",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/metrics?filter=unsupport",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "unsupport"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "limit",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Vml0YWxpaTpUZXN0MTIzNDU=",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Basic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"limit\": \"a1000\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"limit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "metrics/limit",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "Vml0YWxpaTpUZXN0MTIzNDU=",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Basic",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "filter",
+						"value": "limit",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/metrics?filter=limit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "limit"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "metricsNoAuth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
